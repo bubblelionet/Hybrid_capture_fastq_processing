@@ -14,7 +14,7 @@
 module load trim_galore
 
 # Directory containing FASTQ files
-FASTQ_DIR="/cluster/projects/lokgroup/rotations_students/hybrid_capture_baseline"
+FASTQ_DIR="/cluster/projects/lokgroup/rotations_students/hybrid_capture/hybrid_capture_baseline/"
 
 # Directory for output
 OUTPUT_DIR="/cluster/projects/lokgroup/rotations_students/victoria_gao/hybridcap_baseline_fastq_trimmed"
