@@ -16,18 +16,25 @@ module load trim_galore
 # Directory containing FASTQ files
 FASTQ_DIR="/cluster/projects/lokgroup/rotations_students/hybrid_capture/hybrid_capture_baseline/"
 
+# If there is specific files to process
+
+
 # Directory for output
 OUTPUT_DIR="/cluster/projects/lokgroup/rotations_students/victoria_gao/hybridcap_baseline_fastq_trimmed"
 
 # Loop through each FASTQ file in the directory
 for FASTQ_FILE in "$FASTQ_DIR"/*.fastq.gz; do
-    # Extract base name of file for naming output
-    # BASE_NAME=$(basename "${FASTQ_FILE%.fq.gz}" )
 
-    # Remove adapters from fastq
-    trim_galore --quality 20 --gzip --fastqc $FASTQ_FILE -o $OUTPUT_DIR
+    if [[ $FASTQ_FILE == *"/TH_4873"* || $FASTQ_FILE == *"/TH_4803"* || $FASTQ_FILE == *"/TH_4678"* || $FASTQ_FILE == *"/TH_4675"* || $FASTQ_FILE == *"/TH_4414"* || $FASTQ_FILE == *"/TH_4961"* ]]; then
 
-    echo "Trimmed $BASE_NAME"
+        # Extract base name of file for naming output
+        # BASE_NAME=$(basename "${FASTQ_FILE%.fq.gz}" )
+
+        # Remove adapters from fastq
+        trim_galore --quality 20 --gzip --fastqc $FASTQ_FILE -o $OUTPUT_DIR
+
+        echo "Trimmed $BASE_NAME"
+    fi
 done
 
 echo "All FASTQ adapters trimmed!"
