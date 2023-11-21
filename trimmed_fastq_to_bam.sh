@@ -45,7 +45,7 @@ for R1_FASTQ in "$FASTQ_DIR"/*_R1_trimmed.fq.gz; do
     OUTPUT_SAM="$OUTPUT_DIR/${BASE_NAME}.sam"
 
     # Alignment with BWA
-    bwa mem ref.fa "$R1_FASTQ" "$R2_FASTQ" > "$OUTPUT_SAM"
+    bwa mem $BWAINDEX "$R1_FASTQ" "$R2_FASTQ" > "$OUTPUT_SAM"
 
     echo "Created sam file: $BASE_NAME"
 done
