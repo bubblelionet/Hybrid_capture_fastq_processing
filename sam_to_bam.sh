@@ -2,7 +2,7 @@
 
 #SBATCH -t 20:00:00
 #SBATCH --mem=60G
-#SBATCH -J bwa_alignment
+#SBATCH -J create_bam_files
 #SBATCH -p himem
 #SBATCH -c 1
 #SBATCH -N 1
