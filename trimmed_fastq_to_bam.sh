@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#SBATCH -t 5-00:00:00
+#SBATCH -t 20:00:00
 #SBATCH --mem=60G
 #SBATCH -J bwa_alignment
 #SBATCH -p himem
