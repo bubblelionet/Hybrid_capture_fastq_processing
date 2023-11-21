@@ -50,44 +50,19 @@ for R1_FILE in "$FASTQ_DIR"/*_R1.fastq.gz; do
 done
 
 
-# Loop through each FASTQ file in the directory
-for SAM_FILE in "$OUTPUT_SAM"/*.sam; do
-    # Extract base name of file for naming output
-    BASE_NAME=$(basename "$OUTPUT_SAM" .sam)
-
-    # Define output file names
-    OUTPUT_BAM="$OUTPUT_DIR/${BASE_NAME}.bam"
-
-    # Convert SAM to BAM
-    samtools view -Sb $OUTPUT_SAM > $OUTPUT_BAM
-
-    echo "Created bam files: $BASE_NAME"
-done
-
-echo "All BWA alignments completed!"
-
 # # Loop through each FASTQ file in the directory
-# for BAM_FILE in "$FASTQ_DIR"/*.fastq.gz; do
+# for SAM_FILE in "$OUTPUT_SAM"/*.sam; do
 #     # Extract base name of file for naming output
-#     BASE_NAME=$(basename "$FASTQ_FILE" .fastq.gz)
+#     BASE_NAME=$(basename "$OUTPUT_SAM" .sam)
 
 #     # Define output file names
-#     OUTPUT_SAM="$OUTPUT_DIR/${BASE_NAME}.sam"
 #     OUTPUT_BAM="$OUTPUT_DIR/${BASE_NAME}.bam"
-#     SORTED_BAM="$OUTPUT_DIR/${BASE_NAME}_sorted.bam"
-
-#     # Alignment with BWA
-#     bwa mem $BWAINDEX $FASTQ_FILE > $OUTPUT_SAM
 
 #     # Convert SAM to BAM
 #     samtools view -Sb $OUTPUT_SAM > $OUTPUT_BAM
 
-#     # Sort the BAM file
-#     samtools sort $OUTPUT_BAM -o $SORTED_BAM
-
-#     # Index the sorted BAM file
-#     samtools index $SORTED_BAM
-
-#     echo "Processed $BASE_NAME"
+#     echo "Created bam files: $BASE_NAME"
 # done
+
 # echo "All BWA alignments completed!"
+
