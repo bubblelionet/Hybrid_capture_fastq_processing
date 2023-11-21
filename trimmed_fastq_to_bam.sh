@@ -44,7 +44,7 @@ for R1_FILE in "$FASTQ_DIR"/*_R1.fastq.gz; do
     OUTPUT_SAM="$OUTPUT_DIR/${BASE_NAME}.sam"
 
     # Alignment with BWA
-    bwa mem $REF_GENOME "$R1_FILE" "$R2_FILE" > "$OUTPUT_SAM"
+    bwa mem $BWAINDEX "$R1_FILE" "$R2_FILE" > "$OUTPUT_SAM"
 
     echo "Created SAM file: $BASE_NAME"
 done
