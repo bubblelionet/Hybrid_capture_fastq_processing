@@ -33,20 +33,21 @@ OUTPUT_DIR="/cluster/projects/lokgroup/rotations_students/victoria_gao/hybridcap
 # Loop through each pair of FASTQ files in the directory
 # This is specifically for paired-end sequencing
 
-for R1_FILE in "$FASTQ_DIR"/*_R1.fq.gz; do
-    # Replace _R1 with _R2 to find the corresponding R2 file
-    R2_FILE="${R1_FILE/_R1.fq.gz/_R2.fq.gz}"
+# Loop through R1 FASTQ files in the directory
+for R1_FASTQ in "$FASTQ_DIR"/*_R1_trimmed.fq.gz; do
+    # Corresponding R2 FASTQ file
+    R2_FASTQ="${R1_FASTQ/_R1_/_R2_}"
 
-    # Extract base name of file for naming output, removing R1/R2 distinction
-    BASE_NAME=$(basename "${R1_FILE%_R1.fq.gz}" )
+    # Extract base name for output file
+    BASE_NAME=$(basename "${R1_FASTQ%_R1_trimmed.fq.gz}")
 
     # Define output SAM file name
     OUTPUT_SAM="$OUTPUT_DIR/${BASE_NAME}.sam"
 
     # Alignment with BWA
-    bwa mem $BWAINDEX "$R1_FILE" "$R2_FILE" > "$OUTPUT_SAM"
+    bwa mem ref.fa "$R1_FASTQ" "$R2_FASTQ" > "$OUTPUT_SAM"
 
-    echo "Created SAM file: $BASE_NAME"
+    echo "Created sam file: $BASE_NAME"
 done
 
 
