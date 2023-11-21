@@ -33,12 +33,12 @@ OUTPUT_DIR="/cluster/projects/lokgroup/rotations_students/victoria_gao/hybridcap
 # Loop through each pair of FASTQ files in the directory
 # This is specifically for paired-end sequencing
 
-for R1_FILE in "$FASTQ_DIR"/*_R1.fastq.gz; do
+for R1_FILE in "$FASTQ_DIR"/*_R1.fq.gz; do
     # Replace _R1 with _R2 to find the corresponding R2 file
-    R2_FILE="${R1_FILE/_R1.fastq.gz/_R2.fastq.gz}"
+    R2_FILE="${R1_FILE/_R1.fq.gz/_R2.fq.gz}"
 
     # Extract base name of file for naming output, removing R1/R2 distinction
-    BASE_NAME=$(basename "${R1_FILE%_R1.fastq.gz}" )
+    BASE_NAME=$(basename "${R1_FILE%_R1.fq.gz}" )
 
     # Define output SAM file name
     OUTPUT_SAM="$OUTPUT_DIR/${BASE_NAME}.sam"
